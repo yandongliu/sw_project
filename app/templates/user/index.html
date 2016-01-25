@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="row">
+<div class="col-md-6">
+    <ul>
+    {% for user in users %}
+    <li> <a href="/user/"{{user.email}}>{{user.email}}</a>, {{user.first_name}}, {{user.last_name}}
+    {% endfor %}
+    </ul>
+</div>
+</div>
+
+</div>
+
+{% endblock %}

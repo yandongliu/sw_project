@@ -1,6 +1,7 @@
 import os
 
 from flask import Blueprint, request, render_template
+from flask_user import current_user, login_required
 from werkzeug import secure_filename
 
 from app import app
