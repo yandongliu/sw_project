@@ -21,6 +21,9 @@ app.register_blueprint(mod_site)
 from app.mod_user.controllers import mod_user
 app.register_blueprint(mod_user)
 
+from app.mod_movie.controllers import mod_movie
+app.register_blueprint(mod_movie)
+
 from app.mod_user.models import User
 db_adapter = SQLAlchemyAdapter(db, User)
 user_manager = UserManager(db_adapter, app)

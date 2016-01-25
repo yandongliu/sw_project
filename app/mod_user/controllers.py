@@ -48,6 +48,11 @@ def show_users():
 def user_profile():
     return 'hi'
 
+@mod_user.route('/setting')
+@login_required
+def setting():
+    return 'setting'
+
 # seems the hook doesn't work if placed here
 @user_logged_in.connect_via(app)
 def _after_login_hook(sender, user, **extra):
