@@ -50,6 +50,7 @@
             {% endif %}
           <a class="navbar-brand" href="{{url_for('movie.recommendation')}}">推荐电影</a>
           <a class="navbar-brand" href="{{url_for('user.setting')}}">设置</a>
+          <a class="navbar-brand" href="{{url_for('admin.index')}}">管理员</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             {% if current_user.is_authenticated %}
@@ -57,12 +58,14 @@
                 <a href={{url_for('user.logout')}} class="btn btn-success">登出</a>
           </form>
             {% else %}
-          <form class="navbar-form navbar-right" method="POST" action="{{url_for('user.login')}}">
+          {% from "flask_user/_macros.html" import render_field, render_checkbox_field, render_submit_field %}
+          <form class="navbar-form navbar-right" method="POST" action="{{url_for('user.login')}}" role="form">
+            {{ form.hidden_tag() }}
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" placeholder="Email" class="form-control" name="username" id="username">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" class="form-control" name="password" id="password">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>

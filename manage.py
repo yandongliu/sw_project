@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 import os
 from random import choice
@@ -6,7 +7,9 @@ from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
 from app import app, db, user_manager
+from app.lib import util
 from app.mod_user.models import User, Role
+from app.mod_movie.models import Movie
 
 app.config.from_object(os.environ['APP_SETTINGS'])
 
@@ -49,11 +52,24 @@ def create_data():
     db.session.commit()
 
 @manager.command
-def delete_data():
-    """empty all tables"""
-    db.session.execute('delete from "user"')
-    db.session.execute('delete from "role"')
+def create_movie():
+    movie = Movie(
+        title=u'电影{}'.format(util.get_random_number()),
+        description=util.get_random_text(200),
+    )
+    db.session.add(movie)
     db.session.commit()
+
+@manager.command
+def delete_data(table=None):
+    """empty tables"""
+    if table == None:
+        db.session.execute('delete from "user"')
+        db.session.execute('delete from "role"')
+        db.session.commit()
+    else:
+        db.session.execute('delete from "{}"'.format(table))
+        db.session.commit()
 
 @manager.command
 def test():

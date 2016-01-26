@@ -6,13 +6,12 @@
 <div class="container">
 
 <div class="row">
-<div class="col-md-6">
-    <ul>
     {% for movie in movies %}
-    <li> <a href="/movie/"{{movie.id}}>{{movie.title}}</a>, {{movie.description}}
+        <div class="col-md-4">
+            <h2>{{movie.title}}</h2><p>{{movie.description}}</p>
+            <p><a class="btn btn-default" href="/movie/detail/{{movie.id}}" role="button">观看 &raquo;</a></p>
+        </div>
     {% endfor %}
-    </ul>
-</div>
 </div>
 
 </div>

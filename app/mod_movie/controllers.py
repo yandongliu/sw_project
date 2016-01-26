@@ -13,4 +13,5 @@ mod_movie = Blueprint('movie', __name__, url_prefix='/movie')
 
 @mod_movie.route('/recommendation')
 def recommendation():
-    return render_template("movie/recommendation.html", movies=[])
+    movies = Movie.query.all()
+    return render_template("movie/recommendation.html", movies=movies)
