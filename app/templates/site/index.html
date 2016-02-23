@@ -6,39 +6,13 @@
 <div class="container"> 
 
 <div class="row">
+    {% for movie in movies %}
     <div class="col-md-4">
-          <h2>电影1</h2>
-          <p>自从银河帝国衰败之后，正邪轮回再度开始，第一秩序的黑暗力量蔓延滋长，重新为银河系带来威胁。与此同时，对于凯洛·伦的堕落深感内疚的天行者卢克宣告失踪，而围绕卢克下落的一份星系地图，则引起敌我双方的争夺。不愿成为战争机器的第一军团士...</p>
-          <p><a class="btn btn-default" href="#" role="button">观看 &raquo;</a></p>
+          <h2>{{movie.title}}</h2>
+          <p>{{movie.description}}</p>
+          <p><a class="btn btn-default" href="/movie/{{movie.id}}" role="button">观看 &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-          <h2>电影2</h2>
-          <p>从小喜爱杂技表演的菲利普·帕特（约瑟夫·高登-莱维特 Joseph Gordon-Levitt 饰），长大后成为法国杂技名人，他来到纽约，想要完成在摩天大厦之间走钢索的梦想，在遭遇了一系列的怀疑、误解、受伤之后，依然坚定地站在了世贸大楼之间的钢索之上。众目睽睽下，垫钢索的木块突然碎裂，在众人的惊呼声中，400多米高空之上的他，是否可以完成自己的梦想？</p>
-          <p><a class="btn btn-default" href="#" role="button">观看 &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-          <h2>电影3</h2>
-          <p>作为世界上最后一个女巫猎人，寇特（范·迪塞尔 Vin Diesel 饰）被黑巫后诅咒，得到了不死之身。如今，寇特寄居在纽约的一所教堂，与教会派来的第37代助手多兰（伊利亚·伍德 Elijah Wood 饰）联手斩妖除魔。与此同时，黑巫后得到秘术即将复活，邪恶女巫们倾巢而出 ，企图释放超级瘟疫灭绝人类。势单力薄的寇特，求助于善良的梦之女巫克洛伊（露丝·莱斯利 Rose Leslie 饰），在她的帮助下，寇特与邪恶女巫之间的终极之战一触即发</p>
-          <p><a class="btn btn-default" href="#" role="button">观看 &raquo;</a></p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-          <h2>电影1</h2>
-          <p>电影简介1</p>
-          <p><a class="btn btn-default" href="#" role="button">观看 &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-          <h2>电影2</h2>
-          <p>电影简介1</p>
-          <p><a class="btn btn-default" href="#" role="button">观看 &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-          <h2>电影2</h2>
-          <p>电影简介1</p>
-          <p><a class="btn btn-default" href="#" role="button">观看 &raquo;</a></p>
-    </div>
+    {% endfor %}
 </div>
 
 </div>

@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, render_template, request
 from flask.ext.admin import Admin
+from flask.ext.cache import Cache
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_user import UserManager, SQLAlchemyAdapter
 
@@ -14,6 +15,7 @@ app = Flask(
 app.config.from_object(os.environ['APP_SETTINGS'])
 db = SQLAlchemy(app)
 admin = Admin(app)
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 from app.mod_site.controllers import mod_site
 app.register_blueprint(mod_site)

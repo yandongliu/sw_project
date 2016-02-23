@@ -4,6 +4,7 @@ from flask_user import current_user
 
 from app import db
 from app.mod_user.models import User
+from app.mod_movie.models import Movie
 
 class MyView(BaseView):
     def is_accessible(self):
@@ -26,3 +27,4 @@ class MyModelView(ModelView):
 def init_admin(_admin):
     _admin.add_view(MyView(name='Hello'))
     _admin.add_view(MyModelView(User, db.session, endpoint='admin_user'))
+    _admin.add_view(MyModelView(Movie, db.session, endpoint='admin_movie'))

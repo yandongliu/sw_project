@@ -5,7 +5,7 @@ from flask_user import current_user, login_required
 
 import app
 
-from app import db
+from app import cache, db
 from models import Movie
 
 mod_movie = Blueprint('movie', __name__, url_prefix='/movie')
@@ -13,5 +13,13 @@ mod_movie = Blueprint('movie', __name__, url_prefix='/movie')
 
 @mod_movie.route('/recommendation')
 def recommendation():
-    movies = Movie.query.all()
+    movies = Movie.get_all_movies()
     return render_template("movie/recommendation.html", movies=movies)
+
+@cache.cached(timeout=50)
+@mod_movie.route('/<int:id>')
+def index(id):
+    # import pdb; pdb.set_trace()
+    # id = request.args.get('id')
+    movie = Movie.query.get(id)
+    return render_template("movie/recommendation.html", movies=[movie])

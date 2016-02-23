@@ -9,7 +9,7 @@
     {% for movie in movies %}
         <div class="col-md-4">
             <h2>{{movie.title}}</h2><p>{{movie.description}}</p>
-            <p><a class="btn btn-default" href="/movie/detail/{{movie.id}}" role="button">观看 &raquo;</a></p>
+            <p><a class="btn btn-default" href="/movie/{{movie.id}}" role="button">观看 &raquo;</a></p>
         </div>
     {% endfor %}
 </div>
